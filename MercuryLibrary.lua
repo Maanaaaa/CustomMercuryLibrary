@@ -3513,11 +3513,59 @@ function Library:textbox(options)
 	return Ttable
 end
 
-function Library:label(options)
+function Library:labelwithdesc(options)
 
 	options = self:set_defaults({
 		Text = "Label title",
 		Description = "Label text",
+	}, options)
+
+	local labelContainer = self.container:object("TextButton", {
+		Theme = {BackgroundColor3 = "Secondary"},
+		Size = UDim2.new(1, -20, 0, 52),
+		BackgroundTransparency = 1
+	}):round(7):stroke("Secondary", 2)
+
+	local text = labelContainer:object("TextLabel", {
+		BackgroundTransparency = 1,
+		Position = UDim2.fromOffset(10, 5),
+		Size = UDim2.new(0.5, -10, 0, 22),
+		Text = options.Text,
+		TextSize = 22,
+		Theme = {TextColor3 = "StrongText"},
+		TextXAlignment = Enum.TextXAlignment.Left
+	})
+
+	local description = labelContainer:object("TextLabel", {
+		BackgroundTransparency = 1,
+		Position = UDim2.new(0, 10, 1, -5),
+		Size = UDim2.new(0.5, -10, 1, -22),
+		Text = options.Description,
+		TextSize = 18,
+		AnchorPoint = Vector2.new(0, 1),
+		Theme = {TextColor3 = "WeakText"},
+		TextXAlignment = Enum.TextXAlignment.Left
+	})
+
+	self:_resize_tab()
+
+	local methods = {}
+
+	function methods:SetText(txt)
+		text.Text = txt
+	end
+
+	function methods:SetDescription(txt)
+		description.Text = txt
+	end
+
+	return methods
+end
+
+function Library:label(options)
+
+	options = self:set_defaults({
+		Text = "Label title"
 	}, options)
 
 	local labelContainer = self.container:object("TextButton", {
