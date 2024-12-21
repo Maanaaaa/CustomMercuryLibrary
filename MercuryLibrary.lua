@@ -3392,13 +3392,11 @@ function Library:slider(options)
 	end
 	self:_resize_tab()
 
-	local methods = {}
-
-	function methods:Set(value)
+	function Ttable:Set(value)
 		sliderLine:tween{Size = UDim2.fromScale(((value - options.Min) / (options.Max - options.Min)), 1)}
 	end
 
-	return methods
+	return Ttable
 end
 
 function Library:textbox(options)
@@ -3508,13 +3506,11 @@ function Library:textbox(options)
 	end
 	self:_resize_tab()
 
-	local methods = {}
-
-	function methods:Set(text)
+	function Ttable:Set(text)
 		textBox.Text = text
 	end
 
-	return methods
+	return Ttable
 end
 
 function Library:label(options)
