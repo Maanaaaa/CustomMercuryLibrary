@@ -3570,7 +3570,7 @@ function Library:label(options)
 
 	local labelContainer = self.container:object("TextButton", {
 		Theme = {BackgroundColor3 = "Secondary"},
-		Size = UDim2.new(1, -20, 0, 52),
+		Size = UDim2.new(1, -20, 0, 25),
 		BackgroundTransparency = 1
 	}):round(7):stroke("Secondary", 2)
 
