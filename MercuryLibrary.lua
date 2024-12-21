@@ -3536,27 +3536,12 @@ function Library:label(options)
 		TextXAlignment = Enum.TextXAlignment.Left
 	})
 
-	local description = labelContainer:object("TextLabel", {
-		BackgroundTransparency = 1,
-		Position = UDim2.new(0, 10, 1, -5),
-		Size = UDim2.new(0.5, -10, 1, -22),
-		Text = options.Description,
-		TextSize = 18,
-		AnchorPoint = Vector2.new(0, 1),
-		Theme = {TextColor3 = "WeakText"},
-		TextXAlignment = Enum.TextXAlignment.Left
-	})
-
 	self:_resize_tab()
 
 	local methods = {}
 
 	function methods:SetText(txt)
 		text.Text = txt
-	end
-
-	function methods:SetDescription(txt)
-		description.Text = txt
 	end
 
 	return methods
